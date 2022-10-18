@@ -4,16 +4,14 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    let result = [];
-    let remainder;
-    for (let i = 0; i < nums.length; i+=1) {
-        remainder = target - nums[i];
-        let otherIndex = nums.indexOf(remainder, i+1);
-        if (otherIndex !== -1) {
-            result.push(i);
-            result.push(otherIndex);
-            return result;
-        }
+    let hashMap = {};
+    
+    // hash {value, key}
+    for(let i = 0; i < nums.length; i+=1) {
+        let remainer = target - nums[i];
+        if (hashMap[remainer] >= 0) 
+            return [hashMap[remainer], i];
+        hashMap[nums[i]] = i;
     }
     return [];
 };

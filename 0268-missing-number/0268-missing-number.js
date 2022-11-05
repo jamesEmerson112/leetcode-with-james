@@ -8,5 +8,5 @@ var missingNumber = function(nums) {
         sum += nums[i];
     }
     
-    return ((nums.length*(nums.length+1)) / 2) - sum;
+    return ((nums.length*(nums.length+1)) >> 1) - sum;
 };

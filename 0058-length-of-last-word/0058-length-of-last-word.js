@@ -3,19 +3,16 @@
  * @return {number}
  */
 var lengthOfLastWord = function(s) {
+    let index = s.length-1;
     let count = 0;
-    let foundWord = false;
     
-    for (let index = s.length-1; index != -1; index-=1) {
-        console.log(s[index])
-        if (s[index] === ' ') {
-            if(foundWord) return count;
-            count = 0;
-        } else {
-            foundWord = true;
-            count += 1;   
-        }
+    while (s[index] == ' ') {
+        index -=1;
     }
-    
+    while (index >= 0 && s[index] != ' ') {
+        console.log(s[index])
+        count += 1;
+        index -= 1;
+    }
     return count;
 };

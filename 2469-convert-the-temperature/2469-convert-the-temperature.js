@@ -3,9 +3,7 @@
  * @return {number[]}
  */
 var convertTemperature = function(celsius) {
-    let kelvin = celsius + 273.15;
-    let fahrenheit = celsius * 1.80 + 32.0;
-    let array = [kelvin, fahrenheit];
+    let array = [celsius + 273.15, celsius * 1.80 + 32.0];
     
     console.log(array);
     return array;

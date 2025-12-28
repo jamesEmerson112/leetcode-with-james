@@ -5,9 +5,9 @@ class Solution:
         left, right = 0, len(s) - 1
 
         while left < right:
-            while left < right and not s[left].isalpha():
+            while left < right and not s[left].isalnum():
                 left += 1
-            while left < right and not s[right].isalpha():
+            while left < right and not s[right].isalnum():
                 right -= 1
             print(s[left], s[right] )
             temp1 = s[left].lower()

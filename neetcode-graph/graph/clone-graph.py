@@ -15,16 +15,20 @@ class Solution:
         if not node:
             return None
         
-        # create a new node with value of node.val
-        new_node = Node(node.val)
+        clone_node = {} # original node to cloned node mapping
 
-        visited = []
-
-        # clone the neighbors of the node to new_node
-        for neighbor in node.neighbors:
-            if neighbor.val not in visited:
-                visited.append(neighbor.val)
-                new_neighbor = self.test(neighbor)
-                new_node.neighbors.append(new_neighbor)
+        def dfs(node):
+            if node in clone_node:
+                return clone_node[node]
+            
+            copy = Node(node.val)
+            clone_node[node] = copy # map original node to cloned node
+            for neighbor in node.neighbors:
+                copy.neighbors.append(dfs(neighbor))
+            return copy
         
-        return new_node
+        clone = dfs(node)
+
+        print(clone_node)
+        
+        return clone

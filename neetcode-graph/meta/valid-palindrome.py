@@ -13,19 +13,10 @@ class Solution:
         def is_palindrome_range(i, j):
             while i < j:
                 if s[i] != s[j]:
-                    # we allow for one mismatch
-                    # either skip the left character or the right character
-                    if s[i + 1] == s[j]:
-                        if s[i] == s[j - 1]:
-                            # we can continue
-                            # mark skipped = True
-                            skipped = True
-                        else:
-                            return False
-                    else:
-                        return False
+                    return False
                 i += 1
                 j -= 1
+            return True
 
         # hint: we can just check the whole string once, and if we find a mismatch, we can check the two substrings
         left, right = 0, len(s) - 1
@@ -36,6 +27,5 @@ class Solution:
             left += 1
             right -= 1
 
-            return True
         
-        return False
+        return True

@@ -51,6 +51,7 @@ class Solution:
             elif clean_str[i] == ')':
                 right_count += 1
                 if right_count > left_count:
+                    right_count -= 1
                     continue
             result.append(clean_str[i])
 

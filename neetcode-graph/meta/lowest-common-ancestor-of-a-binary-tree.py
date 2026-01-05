@@ -10,29 +10,28 @@ class Solution:
         if not root:
             return None
         
-    
-
         # given a tree, traverse with dfs and keep track of depth
         if root == p or root == q:
             return root
         
+        lca = None
 
-        # keep track of which node is the lowest
-        # in other words, the lowest node with two descendants is the answer
-
-
-        # dfs to print out the node
-        def dfs(node, depth=0):
+        def dfs(node):
+            nonlocal lca
             if not node:
-                return None
+                return [False, False]
+
+            if lca:
+                return [False, False]
             
-            print(node.val)
-            depth += 1
-            print("depth:", depth)
-            
-            left = dfs(node.left, depth)
-            right = dfs(node.right, depth)
+            left = dfs(node.left)
+            right = dfs(node.right)
+
+            result = [left[0] or right[0] or (node == p), left[1]   or right[1] or (node == q)]
+            if result
 
         dfs(root)
 
-        return None
+        return result
+        
+        

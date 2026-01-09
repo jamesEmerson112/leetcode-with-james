@@ -1,11 +1,12 @@
 import React from "react";
 // <PostDisplay posts={posts} />
-function PostDisplay({ posts }) {
+function PostDisplay({ posts, onDelete }) {
 
     const handleDelete = (e) => {
-        e.preventdefault();
-        
+        e.preventDefault();
         console.log("Delete button clicked");
+        console.log("Post to delete:", posts);
+
     }
 
 
@@ -15,7 +16,7 @@ function PostDisplay({ posts }) {
         <div key={index} className="post-box">
           <h3>{post.title}</h3>
           <p>{post.description}</p>
-          <button onclick={handleDelete}>Delete</button>
+          <button onClick={()=> onDelete(index)}>Delete</button>
         </div>
       ))}
     </div>

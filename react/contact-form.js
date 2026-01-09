@@ -15,8 +15,35 @@ function App() {
     // TODO: Add logic to validate inputs and display submitted data
     // HINT: You can use the setError function
 
+    // print out name, email, message for debugging
+    console.log("Submitting:", { name, email, message });
+
+    // if any field is empty set error message
+    // if name has number in it, set error message
+    
+    // trim inputs
+    setName(name.trim());
+    setEmail(email.trim());
+    
+    if (name === "" || email === "" || message === "") {
+      setError("All fields are required.");
+      console.log("Error: All fields are required.");
+      return;
+    }
+
+    const nameRegex = /^[A-Za-z\s]+$/;
+    if (!nameRegex.test(name)) {
+      setError("Name must not contain numbers or special characters.");
+      return;
+    }
+
     // HINT: You can use the setSubmittedData function as below
     // setSubmittedData({ name, email, message });
+    setSubmittedData({ name, email, message });
+    setError("");
+    setName("");
+    setEmail("");
+    setMessage("");
   };
 
   return (

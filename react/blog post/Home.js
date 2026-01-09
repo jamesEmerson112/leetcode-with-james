@@ -8,21 +8,22 @@ function Home() {
     const [posts, setPosts] = React.useState([]);
 
 
-    const handleCreatePost = () => {
+    const handleCreatePost = (e) => {
         e.preventDefault();
         const newPost = { title, description };
 
-        title = title.trim();
-        description = description.trim();
-
-        if (title === "" || description === "") {
+        if (title.trim() === "" || description.trim() === "") {
             console.log("Error: Title and Description cannot be empty.");
             return;
         }
-        
+
         setPosts([...posts, newPost]);
         setTitle("");
         setDescription("");
+    }
+
+    const handleDeletePost = (indexToDelete) => {
+        setPosts(posts.filter((_, index) =>index !== indexToDelete))
     }
 
     return (
@@ -40,7 +41,7 @@ function Home() {
             </button>
         </div>
         <div className="posts-section">
-            <PostDisplay posts={posts} />
+            <PostDisplay posts={posts} onDelete={handleDeletePost} />
         </div>
         </div>
     );

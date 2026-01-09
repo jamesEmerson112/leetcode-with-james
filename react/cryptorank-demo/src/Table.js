@@ -1,5 +1,5 @@
 import React from "react";
-import { cryptocurrencyList } from "../cryptocurrency-list";
+import { cryptocurrencyList } from "./cryptocurrency-list";
 
 // ========== React.memo Demo ==========
 // memo is a Higher Order Component (HOC) that memoizes the component
